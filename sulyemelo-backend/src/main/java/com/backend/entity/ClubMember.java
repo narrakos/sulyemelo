@@ -1,45 +1,53 @@
 package com.backend.entity;
 
+import javax.persistence.*;
 import java.time.LocalDate;
 
+@Entity
+@Table(name = "ClubMember")
 public class ClubMember {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "clubmember_id")
     private Long id;
-    private Event idEvent;
+
+    @ManyToMany
+    @JoinColumn(name = "event_id" )
+    private Event event;
+
+    @ManyToMany
+    @JoinColumn(name = "competition_id")
+    private Competition competition;
+
+    @Column(name = "name")
     private String name;
+
+    @Column(name = "birthdate")
     private LocalDate birthdate;
+
+    @Column(name = "weight_class")
     private Integer weightClass;
+
+    @Column(name = "best_snatch")
     private Integer bestSnatch;
+
+    @Column(name = "best_clean_and_jerk")
     private Integer bestCleanAndJerk;
 
     public ClubMember() {
-    }
-
-    public ClubMember(Long id, Event idEvent, String name, LocalDate birthdate, Integer weightClass,
-                      Integer bestSnatch, Integer bestCleanAndJerk) {
-        this.id = id;
-        this.idEvent = idEvent;
-        this.name = name;
-        this.birthdate = birthdate;
-        this.weightClass = weightClass;
-        this.bestSnatch = bestSnatch;
-        this.bestCleanAndJerk = bestCleanAndJerk;
     }
 
     public Long getId() {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public Event getEvent() {
+        return event;
     }
 
-    public Event getIdEvent() {
-        return idEvent;
-    }
-
-    public void setIdEvent(Event idEvent) {
-        this.idEvent = idEvent;
+    public void setEvent(Event event) {
+        this.event = event;
     }
 
     public String getName() {
@@ -80,5 +88,13 @@ public class ClubMember {
 
     public void setBestCleanAndJerk(Integer bestCleanAndJerk) {
         this.bestCleanAndJerk = bestCleanAndJerk;
+    }
+
+    public Competition getCompetition() {
+        return competition;
+    }
+
+    public void setCompetition(Competition competition) {
+        this.competition = competition;
     }
 }

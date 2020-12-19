@@ -1,41 +1,31 @@
 package com.backend.entity;
 
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
+@Entity
+@Table(name = "Document")
 public class Document {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "document_id")
     private Long id;
-    private ClubMember idClubMember;
+
+    @Column(name = "title")
     private String title;
+
+    @Column(name = "content")
     private String content;
+
+    @Column(name = "date_of_creation")
     private LocalDateTime dateOfCreation;
 
     public Document() {
     }
 
-    public Document(Long id, ClubMember idClubMember, String title, String content,
-                    LocalDateTime dateOfCreation) {
-        this.id = id;
-        this.idClubMember = idClubMember;
-        this.title = title;
-        this.content = content;
-        this.dateOfCreation = dateOfCreation;
-    }
-
     public Long getId() {
         return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public ClubMember getIdClubMember() {
-        return idClubMember;
-    }
-
-    public void setIdClubMember(ClubMember idClubMember) {
-        this.idClubMember = idClubMember;
     }
 
     public String getTitle() {

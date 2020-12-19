@@ -1,51 +1,57 @@
 package com.backend.entity;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "Competition")
 public class Competition {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "competition_id")
     private Long id;
-    private Event idEvent;
-    private ClubMember idClubMember;
+
+    @OneToOne
+    @JoinColumn(name = "event_id" )
+    private Event event;
+
+    @ManyToMany
+    @JoinColumn(name = "clubmember_id" )
+    private ClubMember clubMember;
+
+    @Column(name = "name")
     private String name;
+
+    @Column(name = "class_sport")
     private String classSport;
+
+    @Column(name = "gender")
     private Boolean gender;
+
+    @Column(name = "age_group")
     private String ageGroup;
 
     public Competition() {
-    }
-
-    public Competition(Long id, Event idEvent, ClubMember idClubMember, String name,
-                       String classSport, Boolean gender, String ageGroup) {
-        this.id = id;
-        this.idEvent = idEvent;
-        this.idClubMember = idClubMember;
-        this.name = name;
-        this.classSport = classSport;
-        this.gender = gender;
-        this.ageGroup = ageGroup;
     }
 
     public Long getId() {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public Event getEvent() {
+        return event;
     }
 
-    public Event getIdEvent() {
-        return idEvent;
+    public void setEvent(Event event) {
+        this.event = event;
     }
 
-    public void setIdEvent(Event idEvent) {
-        this.idEvent = idEvent;
+    public ClubMember getClubMember() {
+        return clubMember;
     }
 
-    public ClubMember getIdClubMember() {
-        return idClubMember;
-    }
-
-    public void setIdClubMember(ClubMember idClubMember) {
-        this.idClubMember = idClubMember;
+    public void setClubMember(ClubMember clubMember) {
+        this.clubMember = clubMember;
     }
 
     public String getName() {
@@ -79,4 +85,5 @@ public class Competition {
     public void setAgeGroup(String ageGroup) {
         this.ageGroup = ageGroup;
     }
+
 }

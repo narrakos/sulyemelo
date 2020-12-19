@@ -58,3 +58,5 @@ node
 .eslintcache
 ./lib
 /lib/
+
+/sulyemelo-frontend/debug.log

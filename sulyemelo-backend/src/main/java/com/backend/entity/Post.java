@@ -1,41 +1,44 @@
 package com.backend.entity;
 
-import java.sql.Clob;
+import org.hibernate.type.descriptor.sql.VarcharTypeDescriptor;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
+@Entity
+@Table(name = "Post")
 public class Post {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "post_id")
     private Long id;
-    private Profile idProfile;
+
+    @ManyToOne
+    @JoinColumn(name = "profile_id" )
+    private Profile profile;
+
+    @Column(name = "title")
     private String title;
-    private Clob body;
+
+    @Column(name = "body")
+    private VarcharTypeDescriptor body;
+
+    @Column(name = "date_of_creation")
     private LocalDateTime dateOfCreation;
 
     public Post() {
-    }
-
-    public Post(Long id, Profile idProfile, String title, Clob body, LocalDateTime dateOfCreation) {
-        this.id = id;
-        this.idProfile = idProfile;
-        this.title = title;
-        this.body = body;
-        this.dateOfCreation = dateOfCreation;
     }
 
     public Long getId() {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public Profile getProfile() {
+        return profile;
     }
 
-    public Profile getIdProfile() {
-        return idProfile;
-    }
-
-    public void setIdProfile(Profile idProfile) {
-        this.idProfile = idProfile;
+    public void setProfile(Profile profile) {
+        this.profile = profile;
     }
 
     public String getTitle() {
@@ -46,11 +49,11 @@ public class Post {
         this.title = title;
     }
 
-    public Clob getBody() {
+    public VarcharTypeDescriptor getBody() {
         return body;
     }
 
-    public void setBody(Clob body) {
+    public void setBody(VarcharTypeDescriptor body) {
         this.body = body;
     }
 
