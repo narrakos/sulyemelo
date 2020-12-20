@@ -2,16 +2,10 @@ package com.backend.entity;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.Set;
 
 @Entity
 @Table(name = "ClubMember")
-public class ClubMember {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "clubmember_id")
-    private Long id;
+public class ClubMember extends AbstractEntity{
 
     @Column(name = "name")
     private String name;
@@ -27,10 +21,6 @@ public class ClubMember {
 
     @Column(name = "best_clean_and_jerk")
     private Integer bestCleanAndJerk;
-
-    public Long getId() {
-        return id;
-    }
 
     public String getName() {
         return name;

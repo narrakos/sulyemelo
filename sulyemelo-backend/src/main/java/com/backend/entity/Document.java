@@ -5,12 +5,7 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "Document")
-public class Document {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "document_id")
-    private Long id;
+public class Document extends AbstractEntity{
 
     @Column(name = "title")
     private String title;
@@ -20,10 +15,6 @@ public class Document {
 
     @Column(name = "date_of_creation")
     private LocalDateTime dateOfCreation;
-
-    public Long getId() {
-        return id;
-    }
 
     public String getTitle() {
         return title;

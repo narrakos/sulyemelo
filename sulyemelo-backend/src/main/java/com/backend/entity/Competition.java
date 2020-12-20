@@ -5,12 +5,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "Competition")
-public class Competition {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "competition_id")
-    private Long id;
+public class Competition extends AbstractEntity{
 
     @OneToOne
     @JoinColumn(name = "event_id" )
@@ -31,10 +26,6 @@ public class Competition {
 
     @Column(name = "age_group")
     private String ageGroup;
-
-    public Long getId() {
-        return id;
-    }
 
     public Event getEvent() {
         return event;

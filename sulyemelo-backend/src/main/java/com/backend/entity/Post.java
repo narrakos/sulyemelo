@@ -1,17 +1,13 @@
 package com.backend.entity;
 
 import org.hibernate.type.descriptor.sql.VarcharTypeDescriptor;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "Post")
-public class Post {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "post_id")
-    private Long id;
+public class Post extends AbstractEntity{
 
     @ManyToOne
     @JoinColumn(name = "profile_id" )
@@ -25,10 +21,6 @@ public class Post {
 
     @Column(name = "date_of_creation")
     private LocalDateTime dateOfCreation;
-
-    public Long getId() {
-        return id;
-    }
 
     public Profile getProfile() {
         return profile;

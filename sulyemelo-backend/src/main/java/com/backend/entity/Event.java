@@ -1,18 +1,11 @@
 package com.backend.entity;
 
 import javax.persistence.*;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Set;
 
 @Entity
 @Table(name = "Event")
-public class Event {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "event_id")
-    private Long id;
+public class Event extends AbstractEntity{
 
     @OneToOne
     @JoinColumn(name = "competition_id")
@@ -33,9 +26,6 @@ public class Event {
     @Column(name = "contact_name")
     private String contactName;
 
-    public Long getId() {
-        return id;
-    }
     public String getName() {
         return name;
     }
