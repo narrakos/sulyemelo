@@ -14,9 +14,6 @@ public class NewsletterEmail {
     @Column(name = "email")
     private String email;
 
-    public NewsletterEmail() {
-    }
-
     public Long getId() {
         return id;
     }

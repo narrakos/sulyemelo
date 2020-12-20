@@ -2,6 +2,7 @@ package com.backend.entity;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.Set;
 
 @Entity
 @Table(name = "ClubMember")
@@ -13,12 +14,12 @@ public class ClubMember {
     private Long id;
 
     @ManyToMany
-    @JoinColumn(name = "event_id" )
-    private Event event;
+    @JoinColumn(name = "event_id")
+    private Set<Event> event;
 
     @ManyToMany
     @JoinColumn(name = "competition_id")
-    private Competition competition;
+    private Set<Competition> competition;
 
     @Column(name = "name")
     private String name;
@@ -35,18 +36,15 @@ public class ClubMember {
     @Column(name = "best_clean_and_jerk")
     private Integer bestCleanAndJerk;
 
-    public ClubMember() {
-    }
-
     public Long getId() {
         return id;
     }
 
-    public Event getEvent() {
+    public Set<Event> getEvent() {
         return event;
     }
 
-    public void setEvent(Event event) {
+    public void setEvent(Set<Event> event) {
         this.event = event;
     }
 
@@ -90,11 +88,11 @@ public class ClubMember {
         this.bestCleanAndJerk = bestCleanAndJerk;
     }
 
-    public Competition getCompetition() {
+    public Set<Competition> getCompetition() {
         return competition;
     }
 
-    public void setCompetition(Competition competition) {
+    public void setCompetition(Set<Competition> competition) {
         this.competition = competition;
     }
 }

@@ -21,9 +21,6 @@ public class Document {
     @Column(name = "date_of_creation")
     private LocalDateTime dateOfCreation;
 
-    public Document() {
-    }
-
     public Long getId() {
         return id;
     }

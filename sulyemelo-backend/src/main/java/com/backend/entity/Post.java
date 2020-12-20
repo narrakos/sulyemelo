@@ -26,9 +26,6 @@ public class Post {
     @Column(name = "date_of_creation")
     private LocalDateTime dateOfCreation;
 
-    public Post() {
-    }
-
     public Long getId() {
         return id;
     }
