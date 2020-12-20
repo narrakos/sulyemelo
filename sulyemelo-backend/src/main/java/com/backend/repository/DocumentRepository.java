@@ -1,9 +1,9 @@
 package com.backend.repository;
 
-import com.backend.entity.Profile;
+import com.backend.entity.Document;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface DocumentRepository extends JpaRepository<Profile, Long> {
+public interface DocumentRepository extends JpaRepository<Document, Long> {
 }
