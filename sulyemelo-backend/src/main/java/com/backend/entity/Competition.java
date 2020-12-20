@@ -1,6 +1,7 @@
 package com.backend.entity;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "Competition")
@@ -17,7 +18,7 @@ public class Competition {
 
     @ManyToMany
     @JoinColumn(name = "clubmember_id" )
-    private ClubMember clubMember;
+    private Set<ClubMember> clubMember;
 
     @Column(name = "name")
     private String name;
@@ -31,9 +32,6 @@ public class Competition {
     @Column(name = "age_group")
     private String ageGroup;
 
-    public Competition() {
-    }
-
     public Long getId() {
         return id;
     }
@@ -46,11 +44,11 @@ public class Competition {
         this.event = event;
     }
 
-    public ClubMember getClubMember() {
+    public Set<ClubMember> getClubMember() {
         return clubMember;
     }
 
-    public void setClubMember(ClubMember clubMember) {
+    public void setClubMember(Set<ClubMember> clubMember) {
         this.clubMember = clubMember;
     }
 

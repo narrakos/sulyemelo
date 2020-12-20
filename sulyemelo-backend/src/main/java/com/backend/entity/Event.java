@@ -3,6 +3,7 @@ package com.backend.entity;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Set;
 
 @Entity
 @Table(name = "Event")
@@ -14,8 +15,8 @@ public class Event {
     private Long id;
 
     @ManyToMany
-    @JoinColumn(name = "clubmember_id" )
-    private ClubMember clubMember;
+    @JoinColumn(name = "clubmember_id")
+    private Set<ClubMember> clubmember;
 
     @OneToOne
     @JoinColumn(name = "competition_id")
@@ -35,9 +36,6 @@ public class Event {
 
     @Column(name = "contact_name")
     private String contactName;
-
-    public Event() {
-    }
 
     public Long getId() {
         return id;
@@ -82,19 +80,19 @@ public class Event {
         this.contactName = contactName;
     }
 
-    public ClubMember getClubMember() {
-        return clubMember;
-    }
-
-    public void setClubMember(ClubMember clubMember) {
-        this.clubMember = clubMember;
-    }
-
     public Competition getCompetition() {
         return competition;
     }
 
     public void setCompetition(Competition competition) {
         this.competition = competition;
+    }
+
+    public Set<ClubMember> getClubmember() {
+        return clubmember;
+    }
+
+    public void setClubmember(Set<ClubMember> clubmember) {
+        this.clubmember = clubmember;
     }
 }

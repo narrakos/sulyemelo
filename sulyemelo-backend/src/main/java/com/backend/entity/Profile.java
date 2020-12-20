@@ -1,6 +1,7 @@
 package com.backend.entity;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "Profile")
@@ -13,9 +14,6 @@ public class Profile {
 
     @Column(name = "name")
     private String name;
-
-    public Profile() {
-    }
 
     public Long getId() {
         return id;
