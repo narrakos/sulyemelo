@@ -18,7 +18,7 @@ public class EventController {
     public Event getEvent() {
 
         Event response = new Event();
-        response.setClubMember(new ClubMember());
+//        response.setClubMember(new ClubMember());
         response.setLocation("");
         response.setContactName("");
         response.setTicketPrice(12);
