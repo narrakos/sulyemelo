@@ -14,10 +14,6 @@ public class Event {
     @Column(name = "event_id")
     private Long id;
 
-    @ManyToMany
-    @JoinColumn(name = "clubmember_id")
-    private Set<ClubMember> clubmember;
-
     @OneToOne
     @JoinColumn(name = "competition_id")
     private Competition competition;
@@ -88,11 +84,4 @@ public class Event {
         this.competition = competition;
     }
 
-    public Set<ClubMember> getClubmember() {
-        return clubmember;
-    }
-
-    public void setClubmember(Set<ClubMember> clubmember) {
-        this.clubmember = clubmember;
-    }
 }

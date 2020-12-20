@@ -13,14 +13,6 @@ public class ClubMember {
     @Column(name = "clubmember_id")
     private Long id;
 
-    @ManyToMany
-    @JoinColumn(name = "event_id")
-    private Set<Event> event;
-
-    @ManyToMany
-    @JoinColumn(name = "competition_id")
-    private Set<Competition> competition;
-
     @Column(name = "name")
     private String name;
 
@@ -38,14 +30,6 @@ public class ClubMember {
 
     public Long getId() {
         return id;
-    }
-
-    public Set<Event> getEvent() {
-        return event;
-    }
-
-    public void setEvent(Set<Event> event) {
-        this.event = event;
     }
 
     public String getName() {
@@ -88,11 +72,4 @@ public class ClubMember {
         this.bestCleanAndJerk = bestCleanAndJerk;
     }
 
-    public Set<Competition> getCompetition() {
-        return competition;
-    }
-
-    public void setCompetition(Set<Competition> competition) {
-        this.competition = competition;
-    }
 }
