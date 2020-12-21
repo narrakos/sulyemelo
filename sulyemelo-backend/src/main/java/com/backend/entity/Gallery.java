@@ -9,7 +9,6 @@ public class Gallery extends AbstractEntity{
     @Column(name = "name")
     private String name;
 
-    @Lob
     @Column(name = "path")
     private String path;
 
