@@ -5,14 +5,14 @@ import com.backend.entity.Competition;
 import com.backend.entity.Event;
 import com.backend.service.EventService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 @RestController
 @CrossOrigin("*")
+@RequestMapping("event")
 public class EventController {
 
 
@@ -20,19 +20,16 @@ public class EventController {
 
 
     @Autowired
-    public EventController(EventService eventService){
+    public EventController(EventService eventService) {
         this.eventService = eventService;
     }
 
 
-    @GetMapping("getEvents")
+    @GetMapping("getAll")
     public ArrayList<Event> getEvents() {
         Event e1 = new Event();
         Event e2 = new Event();
         Event e3 = new Event();
-
-
-
 
 
         ArrayList<Event> events = new ArrayList<>();
@@ -45,13 +42,14 @@ public class EventController {
 
     }
 
+    @PostMapping("save")
     public void saveEvent(
-            Competition competition_id,
-            String name,
-            LocalDateTime date_time,
-            String location,
-            Integer ticket_price,
-            String contact_name){
+            @RequestParam Competition competition_id,
+            @RequestParam String name,
+            @RequestParam LocalDateTime date_time,
+            @RequestParam String location,
+            @RequestParam Integer ticket_price,
+            @RequestParam String contact_name) {
 
         Event toSaveEvent = new Event();
         toSaveEvent.setName(name);
@@ -65,13 +63,9 @@ public class EventController {
     }
 
 
-
-
     //service bekérése: private final EventService eventService;
     //konstruktor létrehozása
     //@autowired
-
-
 
 
 }

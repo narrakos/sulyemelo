@@ -4,14 +4,14 @@ package com.backend.controller;
 import com.backend.entity.ClubMember;
 import com.backend.service.ClubMemberService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 
 @RestController
 @CrossOrigin("*")
+@RequestMapping("member")
 public class ClubMemberController {
 
     private final ClubMemberService clubMemberService;
@@ -21,7 +21,7 @@ public class ClubMemberController {
         this.clubMemberService = cms;
     }
 
-
+    @GetMapping("getAll")
     public ArrayList<ClubMember> getClubMembers(){
         ClubMember cm1 = new ClubMember();
         ClubMember cm2 = new ClubMember();
@@ -34,7 +34,12 @@ public class ClubMemberController {
         return clubMembers;
     }
 
-    public void saveClubMember(String name, LocalDate birthdate, Integer wightClass, Integer bestSnatch, Integer bestCleanAndJerk){
+    @PostMapping("save")
+    public void saveClubMember(@RequestParam String name,
+                               @RequestParam LocalDate birthdate,
+                               @RequestParam Integer wightClass,
+                               @RequestParam Integer bestSnatch,
+                               @RequestParam Integer bestCleanAndJerk){
         ClubMember cm = new ClubMember();
         cm.setBestSnatch(bestSnatch);
         cm.setBirthdate(birthdate);
