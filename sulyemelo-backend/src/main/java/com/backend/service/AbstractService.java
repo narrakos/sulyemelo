@@ -30,36 +30,27 @@ public abstract class AbstractService<Entity extends AbstractEntity, Repository 
         return repository.findAllById(ids);
     }
 
-    <S extends Entity> List<S> saveAll(Iterable<S> entities) {
-        return repository.saveAll(entities);
-    }
-
     void flush() {
 
+        repository.flush();
     }
 
-    <S extends Entity> S saveAndFlush(S entity) {
+    Entity saveAndFlush(Entity entity) {
         return repository.saveAndFlush(entity);
     }
 
     void deleteInBatch(Iterable<Entity> entities) {
 
+        repository.deleteInBatch(entities);
     }
 
     void deleteAllInBatch() {
 
+        repository.deleteAllInBatch();
     }
 
     Entity getOne(Long id) {
         return repository.getOne(id);
-    }
-
-    <S extends Entity> List<S> findAll(Example<S> example) {
-        return repository.findAll(example);
-    }
-
-    <S extends Entity> List<S> findAll(Example<S> example, Sort sort) {
-        return repository.findAll(example, sort);
     }
 
 }
