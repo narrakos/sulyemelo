@@ -9,48 +9,53 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public abstract class AbstractService<Entity extends AbstractEntity, Repository extends JpaRepository<Entity, Long>> {
+public abstract class AbstractService<Entity extends AbstractEntity> {
 
     Entity entity;
-    Repository repository;
+    JpaRepository<Entity, Long> repository;
 
     public Entity save(Entity entity){
-        return repository.save(entity);
+        return getRepository().save(entity);
     }
 
-    List<Entity> findAll() {
-        return repository.findAll();
+    public List<Entity> saveAll(List<Entity> entities) {
+        return getRepository().saveAll(entities);
     }
 
-    List<Entity> findAll(Sort sort) {
-        return repository.findAll(sort);
+    public List<Entity> findAll() {
+        return getRepository().findAll();
     }
 
-    List<Entity> findAllById(Iterable<Long> ids) {
-        return repository.findAllById(ids);
+    public List<Entity> findAll(Sort sort) {
+        return getRepository().findAll(sort);
     }
 
-    void flush() {
-
-        repository.flush();
+    public List<Entity> findAllById(Iterable<Long> ids) {
+        return getRepository().findAllById(ids);
     }
 
-    Entity saveAndFlush(Entity entity) {
-        return repository.saveAndFlush(entity);
+    public void flush() {
+
+        getRepository().flush();
     }
 
-    void deleteInBatch(Iterable<Entity> entities) {
-
-        repository.deleteInBatch(entities);
+    public Entity saveAndFlush(Entity entity) {
+        return getRepository().saveAndFlush(entity);
     }
 
-    void deleteAllInBatch() {
+    public void deleteInBatch(Iterable<Entity> entities) {
 
-        repository.deleteAllInBatch();
+        getRepository().deleteInBatch(entities);
     }
 
-    Entity getOne(Long id) {
-        return repository.getOne(id);
+    public void deleteAllInBatch() {
+
+        getRepository().deleteAllInBatch();
     }
 
+    public Entity getOne(Long id) {
+        return getRepository().getOne(id);
+    }
+
+    abstract JpaRepository<Entity, Long> getRepository();
 }
