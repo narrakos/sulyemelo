@@ -1,21 +1,45 @@
 import React from 'react';
-import {BrowserRouter as Router, Link} from 'react-router-dom';
+import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
+import Events from '../Events'
 
 const Navbar = () => {
     return (
-        <div>
-            <React.Fragment>
-                <Router>
-                    <Link to="#">Home</Link>
-                    <Link to="#">Rólunk</Link>
-                    <Link to="#">Tagok</Link>
-                    <Link to="#">Versenyek</Link>
-                    <Link to="#">Galéria</Link>
-                    <Link to="#">Dokumentumtár</Link>
-                    <Link to="#">Kapcsolat</Link>
-                </Router>
-            </React.Fragment>
-        </div>
+        <Router>
+            <div>
+                <ul>
+                    <li>
+                        <Link to="#">Home</Link>
+                    </li>
+                    <li>
+                        <Link to="#">Rólunk</Link>
+                    </li>
+                    <li>
+                        <Link to="#">Tagok</Link>
+                    </li>
+                    <li>
+                        <Link to='/versenyek'>Versenyek</Link>
+                    </li>
+                    <li>
+                        <Link to="#">Galéria</Link>
+                    </li>
+                    <li>
+                        <Link to="#">Dokumentumtár</Link>
+                    </li>
+                    <li>
+                        <Link to="#">Kapcsolat</Link>
+                    </li>
+                </ul>
+
+                <hr />
+
+                <Switch>
+                    <Route exact path={'/versenyek'}>
+                        <Events />
+                    </Route>
+                </Switch>
+
+            </div>
+        </Router>
     );
 };
 
