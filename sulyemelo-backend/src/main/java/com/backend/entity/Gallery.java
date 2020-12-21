@@ -10,8 +10,8 @@ public class Gallery extends AbstractEntity{
     private String name;
 
     @Lob
-    @Column(name = "picture")
-    private byte[] picture;
+    @Column(name = "path")
+    private String path;
 
     public String getName() {
         return name;
@@ -21,12 +21,12 @@ public class Gallery extends AbstractEntity{
         this.name = name;
     }
 
-    public byte[] getPicture() {
-        return picture;
+    public String getPath() {
+        return path;
     }
 
-    public void setPicture(byte[] picture) {
-        this.picture = picture;
+    public void setPath(String path) {
+        this.path = path;
     }
 }
 
