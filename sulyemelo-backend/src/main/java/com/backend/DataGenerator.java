@@ -49,6 +49,7 @@ public class DataGenerator {
         generateGallery();
         generateNewsletterEmail();
         generateProfile();
+        generatePost();
         return "generálva";
     }
 
