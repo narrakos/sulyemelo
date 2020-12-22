@@ -8,7 +8,7 @@ const Header = () => {
             <React.Fragment>
                 <TitleBar/>
                 <Navbar/>
-                <img src="" alt="Header-img"/>
+                {/*<img src="" alt="Header-img"/>*/}
             </React.Fragment>
         </div>
     );
