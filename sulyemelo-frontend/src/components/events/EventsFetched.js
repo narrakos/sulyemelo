@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 
 
-const Events = () => {
+const EventsFetched = () => {
 
     const [events, setEvents] = useState([]);
 
@@ -16,9 +16,9 @@ const Events = () => {
         });
     };
 
-    const formattedEvents = events.map((event, index) => {
+    const formattedEvents = events.map(event => {
         return (
-            <div>
+            <div key={event.id}>
                 <h3>{event.name}</h3>
                 <p>{event.location}</p>
                 <p>{event.dateTime}</p>
@@ -33,5 +33,4 @@ const Events = () => {
     );
 };
 
-
-export default Events
+export default EventsFetched;

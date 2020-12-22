@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Set;
 
 @RestController
@@ -20,6 +21,11 @@ public class CompetitionController {
     @Autowired
     public CompetitionController(CompetitionService competitionService) {
         this.competitionService = competitionService;
+    }
+
+    @GetMapping("getAll")
+    public List<Competition> getCompetitions() {
+        return competitionService.findAll();
     }
 
     @PostMapping("save")
