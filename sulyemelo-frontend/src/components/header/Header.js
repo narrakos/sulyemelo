@@ -1,5 +1,5 @@
 import React from 'react';
-import Navbar from './Navbar';
+import NavbarComp from './NavbarComp';
 import TitleBar from './TitleBar';
 
 const Header = () => {
@@ -7,7 +7,7 @@ const Header = () => {
         <div>
             <React.Fragment>
                 <TitleBar/>
-                <Navbar/>
+                <NavbarComp/>
                 <img src="" alt="Header-img"/>
             </React.Fragment>
         </div>
