@@ -1,7 +1,7 @@
 import React from 'react';
-import {BrowserRouter as Router, Link, Route, Switch} from 'react-router-dom';
+import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
+import Events from '../Events'
 import Members from '../Members';
-import Events from '../events/Events';
 
 const Navbar = () => {
     return (
@@ -18,7 +18,7 @@ const Navbar = () => {
                         <Link to="/tagok">Tagok</Link>
                     </li>
                     <li>
-                        <Link to='/esemenyek'>Események</Link>
+                        <Link to='/versenyek'>Versenyek</Link>
                     </li>
                     <li>
                         <Link to="#">Galéria</Link>
@@ -34,8 +34,8 @@ const Navbar = () => {
                 <hr />
 
                 <Switch>
-                    <Route exact path={'/esemenyek'}>
-                        <Events/>
+                    <Route exact path={'/versenyek'}>
+                        <Events />
                     </Route>
                     <Route exact path={'/tagok'}>
                         <Members />

@@ -1,17 +1,19 @@
 import React from 'react';
+import './TitleBar.css';
+
 
 const TitleBar = () => {
     return (
         <div>
             <React.Fragment>
 
-                <img src="" alt="logo"/>
+                <img src="res/logo.jpg" alt="logo"/>
                 <h1>Pécsi Súlyemelő Egyesület</h1>
                 <div>
-                    <img src="" alt="facebook"/>
-                    <img src="" alt="youtube"/>
-                    <img src="" alt="twitter"/>
-                    <img src="" alt="instagram"/>
+                    <img src="res/facebook.png" alt="facebook"/>
+                    <img src="res/youtube.png" alt="youtube"/>
+                    <img src="res/twitter.png" alt="twitter"/>
+                    <img src="res/instagram.png" alt="instagram"/>
                 </div>
             </React.Fragment>
         </div>
