@@ -2,12 +2,34 @@ import React, {useState} from 'react';
 import axios from 'axios';
 
 class EventForm extends React.Component {
-    handleSubmit(formData) {
-        // axios.post('http://localhost:8081/event/save', formData)
-        //     .catch(err => {
-        //         console.log(err);
-        //     })
-        console.log(formData);
+    constructor(props: P, context: any) {
+        super(props, context);
+        this.state = {
+            eventName: '',
+            location: ''
+        }
+
+        this.handleSubmit = this.handleSubmit.bind(this)
+        this.setEventName = this.setEventName.bind(this)
+        this.setLocation = this.setLocation.bind(this)
+    }
+
+    setEventName(event) {
+        this.setState({eventName : event.target.eventName})
+    }
+
+    setLocation(event) {
+        this.setState({location : event.target.location})
+    }
+
+    handleSubmit(event) {
+        console.log(this.state.eventName)
+        axios.post('http://localhost:8081/event/save', this.state)
+            .catch(err => {
+                console.log(err);
+            })
+        console.log(this.state);
+        event.preventDefault();
     }
 
     getCompetitions() {
@@ -33,11 +55,11 @@ class EventForm extends React.Component {
             <form onSubmit={this.handleSubmit}>
                 <label>
                     Esemény neve:
-                    <input type='text' name='name'/>
+                    <input type='text' name='name' value={this.state.eventName} onChange={this.setEventName}/>
                 </label>
                 <label>
                     Helyszín:
-                    <input type='text' name='location'/>
+                    <input type='text' name='location' value={this.state.location} onChange={this.setLocation}/>
                 </label>
                 {/*<label>*/}
                 {/*    <select name='competition'>*/}

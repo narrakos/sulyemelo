@@ -32,20 +32,12 @@ public class EventController {
 
     @PostMapping("save")
     public void saveEvent(
-            @RequestParam Competition competition_id,
             @RequestParam String name,
-            @RequestParam LocalDateTime date_time,
-            @RequestParam String location,
-            @RequestParam Integer ticket_price,
-            @RequestParam String contact_name) {
+            @RequestParam String location) {
 
         Event toSaveEvent = new Event();
         toSaveEvent.setName(name);
         toSaveEvent.setLocation(location);
-        toSaveEvent.setContactName(contact_name);
-        toSaveEvent.setCompetition(competition_id);
-        toSaveEvent.setTicketPrice(ticket_price);
-        toSaveEvent.setDateTime(date_time);
 
         eventService.save(toSaveEvent);
     }
